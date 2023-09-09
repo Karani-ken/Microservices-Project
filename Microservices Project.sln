@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Registration System", "Registration System\Registration System.csproj", "{E21F3147-E335-4602-9BFD-E482A6E91646}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostService", "PostService\PostService.csproj", "{DBE4DFAB-6158-4378-9F4F-6F2A02859DA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostService", "PostService\PostService.csproj", "{DBE4DFAB-6158-4378-9F4F-6F2A02859DA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentsService", "CommentsService\CommentsService.csproj", "{F286DFC5-636B-4175-91E1-9A677926B1BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{DBE4DFAB-6158-4378-9F4F-6F2A02859DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBE4DFAB-6158-4378-9F4F-6F2A02859DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBE4DFAB-6158-4378-9F4F-6F2A02859DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F286DFC5-636B-4175-91E1-9A677926B1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F286DFC5-636B-4175-91E1-9A677926B1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F286DFC5-636B-4175-91E1-9A677926B1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F286DFC5-636B-4175-91E1-9A677926B1BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E21F3147-E335-4602-9BFD-E482A6E91646} = {BC7F8385-0F69-44A9-8AFE-8609ACC8A3D8}
 		{DBE4DFAB-6158-4378-9F4F-6F2A02859DA9} = {BC7F8385-0F69-44A9-8AFE-8609ACC8A3D8}
+		{F286DFC5-636B-4175-91E1-9A677926B1BB} = {BC7F8385-0F69-44A9-8AFE-8609ACC8A3D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33374A4A-26A2-499D-9934-02EC23CF9460}
