@@ -16,9 +16,9 @@ namespace CommentsService.Services
             _context = context;
             _mapper=mapper;
         }
-        public async Task<string> AddCommentAsync(CommentRequestDto commentRequestDto)
+        public async Task<string> AddCommentAsync(Comments  newComment)
         {
-           var newComment = _mapper.Map<Comments>(commentRequestDto);
+         
             try
             {
                 _context.Comments.Add(newComment);

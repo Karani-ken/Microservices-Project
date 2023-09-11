@@ -5,7 +5,7 @@ namespace CommentsService.Services.IServices
 {
     public interface ICommentsService
     {
-        Task<string> AddCommentAsync(CommentRequestDto commentRequestDto);
+        Task<string> AddCommentAsync(Comments newComment);
         Task<IEnumerable<Comments>> GetAllCommentsAsync(Guid PostId);
 
         Task<string> DeleteComments(Comments comment);        

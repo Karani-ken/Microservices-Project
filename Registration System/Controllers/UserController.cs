@@ -60,17 +60,6 @@ namespace Registration_System.Controllers
             return Ok(_response);
         }
       
-        private async Task<ActionResult<string>> GetUserIdFromToken(string JwtToken)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.ReadJwtToken(JwtToken);
-
-            Claim UserIdClaim = token.Claims.FirstOrDefault(c => c.Type == "Sub");
-            if (UserIdClaim != null)
-            {
-                return UserIdClaim.Value;
-            }
-            return null;
-        }
+       
     }
 }
