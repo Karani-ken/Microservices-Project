@@ -14,8 +14,7 @@ namespace Registration_System.Services.IServices
         //UserLogin
         Task<LoginResponceDto> GetLoginAsync(LoginRequestDto login);
 
-        //Get userPosts
-        Task<IEnumerable<PostDto>> GetPostsAsync(Guid UserId);
+     
 
        
        

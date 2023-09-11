@@ -16,7 +16,7 @@ namespace PostService.Services
             _context=context;
             _mapper = mapper;
         }
-        public async Task<string> AddPostAsync(PostRequestDto newPost)
+        public async Task<string> AddPostAsync(Post newPost)
         {
             var NewPost = _mapper.Map<Post>(newPost);  
             try
@@ -46,10 +46,10 @@ namespace PostService.Services
         }
 
         //Get user Posts
-        public async Task<IEnumerable<Post>> GetAllPostsAsync(Guid UserId)
+        public async Task<IEnumerable<Post>> GetAllPostsAsync(string UserId)
         {
-            var Result = await _context.Posts.ToListAsync();
-           return Result;
+            return await _context.Posts.Where(p=>p.UserId == UserId).ToListAsync();
+           
         }
 
         public async Task<PostDto> GetPostByIdAsync(Guid id)

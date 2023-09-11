@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentsService", "Comments
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service Bus", "Service Bus\Service Bus.csproj", "{59FFE4EE-EBC6-4781-905A-9E123ED988C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService", "EmailService\EmailService.csproj", "{907EC752-EB06-4CAB-B756-D8611CCBF4F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{59FFE4EE-EBC6-4781-905A-9E123ED988C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59FFE4EE-EBC6-4781-905A-9E123ED988C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59FFE4EE-EBC6-4781-905A-9E123ED988C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907EC752-EB06-4CAB-B756-D8611CCBF4F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907EC752-EB06-4CAB-B756-D8611CCBF4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907EC752-EB06-4CAB-B756-D8611CCBF4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907EC752-EB06-4CAB-B756-D8611CCBF4F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{DBE4DFAB-6158-4378-9F4F-6F2A02859DA9} = {BC7F8385-0F69-44A9-8AFE-8609ACC8A3D8}
 		{F286DFC5-636B-4175-91E1-9A677926B1BB} = {BC7F8385-0F69-44A9-8AFE-8609ACC8A3D8}
 		{59FFE4EE-EBC6-4781-905A-9E123ED988C7} = {7E3991A0-41C1-43B5-89F1-02B219ED57E1}
+		{907EC752-EB06-4CAB-B756-D8611CCBF4F9} = {BC7F8385-0F69-44A9-8AFE-8609ACC8A3D8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33374A4A-26A2-499D-9934-02EC23CF9460}

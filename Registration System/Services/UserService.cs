@@ -77,12 +77,6 @@ namespace Registration_System.Services
             return LoggedUser;
         }
 
-       public async Task<IEnumerable<PostDto>> GetPostsAsync(Guid UserId)
-        {
-            var AllPosts = await _postInterface.GetPosts();
-            var UserPosts = AllPosts.Where(p => p.UserId == UserId).ToList();
-            return UserPosts;
-          
-        }
+      
     }
 }

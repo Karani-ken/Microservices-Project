@@ -16,10 +16,12 @@ namespace Registration_System.Controllers
         private readonly IUserInterface _userInterface;
         private readonly IMessageBus _messageBus;
         private readonly IConfiguration _configuration;
-        public UserController(IUserInterface userInterface)
+        public UserController(IUserInterface userInterface, IMessageBus message, IConfiguration configuration)
         {
             _response = new ResponseDto();
             _userInterface = userInterface;
+            _configuration = configuration;
+            _messageBus= message;
         }
         [HttpPost("Register")]
         public async Task<ActionResult<ResponseDto>> AddUser(RegisterDto registerDto)
@@ -57,26 +59,7 @@ namespace Registration_System.Controllers
             _response.Result = res;
             return Ok(_response);
         }
-        //get userPosts
-        [HttpGet("Posts")]
-        public async Task<ActionResult<PostDto>> UserPosts(string jwtToken)
-        {
-            var UserId = await GetUserIdFromToken(jwtToken);
-            bool Converted = Guid.TryParse(UserId.ToString(), out Guid userId);
-            if (Converted)
-            {
-                var res = await _userInterface.GetPostsAsync(userId);
-                if (res == null)
-                {
-                    _response.IsSuccess = false;
-                    _response.Message = "Could not fetch Posts";
-                    return BadRequest(_response);
-                }
-                _response.Result = res;
-              
-            }
-            return Ok(_response);
-        }
+      
         private async Task<ActionResult<string>> GetUserIdFromToken(string JwtToken)
         {
             var tokenHandler = new JwtSecurityTokenHandler();

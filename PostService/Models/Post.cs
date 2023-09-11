@@ -8,6 +8,6 @@
         public string Description { get; set; } = string.Empty;
 
         public string Image { get; set; } = string.Empty;
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

@@ -1,14 +1,16 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using PostService.Models;
 using PostService.Models.Dto;
 using PostService.Services.IServices;
+using System.Security.Claims;
 
 namespace PostService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PostsController : ControllerBase
     {
         private readonly IPostInterface _postService;
@@ -23,7 +25,13 @@ namespace PostService.Controllers
         [HttpPost]
         public async Task<ActionResult<ResponseDto>> CreatePost(PostRequestDto postRequestDto)
         {
-            var response = await _postService.AddPostAsync(postRequestDto);
+            var newPost = _mapper.Map<Post>(postRequestDto);
+
+            //get user id from the token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            newPost.UserId = userIdClaim.Value;
+            var response = await _postService.AddPostAsync(newPost);
+
             if (!string.IsNullOrWhiteSpace(response))
             {
                 _response.IsSuccess = false;
@@ -33,8 +41,11 @@ namespace PostService.Controllers
             return Ok(_response);
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ResponseDto>>> GetUserPosts(Guid UserId)
+        public async Task<ActionResult<IEnumerable<ResponseDto>>> GetUserPosts()
         {
+            //get user id from the token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            var UserId = userIdClaim.Value;
             var response = await _postService.GetAllPostsAsync(UserId);
             if (response == null)
             {
@@ -44,7 +55,8 @@ namespace PostService.Controllers
             }
             _response.Result = response;
             return Ok(_response);
-        } 
-        
+        }
+
+
     }
 }
