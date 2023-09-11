@@ -1,4 +1,5 @@
 using CommentsService.Data;
+using CommentsService.Extensions;
 using CommentsService.Services;
 using CommentsService.Services.IServices;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<ICommentsService, CommentService>();
 //automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.AddSwaggenGenExtension();
+builder.AddAppAuthentication();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,7 +29,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMigration();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

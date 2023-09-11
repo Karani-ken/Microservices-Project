@@ -49,7 +49,7 @@ namespace CommentsService.Controllers
                 _response.Message = "No comments to fetch";
                 return BadRequest(_response);
             }
-            var mappedResponse = _mapper.Map<CommentDto>(response);
+            var mappedResponse = _mapper.Map<IEnumerable<CommentDto>>(response);
             _response.Result = mappedResponse;
             return Ok(_response);
         }

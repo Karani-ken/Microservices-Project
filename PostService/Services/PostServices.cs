@@ -4,6 +4,7 @@ using PostService.Data;
 using PostService.Models;
 using PostService.Models.Dto;
 using PostService.Services.IServices;
+using System.Collections;
 
 namespace PostService.Services
 {
@@ -76,12 +77,11 @@ namespace PostService.Services
             
         }
 
-      public  async Task<IEnumerable<PostDto>> GetAllPosts()
+      public  async Task<IEnumerable<Post>> GetAllPosts()
         {
-            var AllPosts= await _context.Posts.ToListAsync();
+            return await _context.Posts.ToListAsync();
 
-            var posts = _mapper.Map<PostDto>(AllPosts);
-            return (IEnumerable<PostDto>)posts;
+            
         }
     }
 }

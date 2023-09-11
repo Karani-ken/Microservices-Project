@@ -1,7 +1,10 @@
-﻿namespace CommentsService.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CommentsService.Models
 {
     public class Comments
     {
+        [Key]
         public Guid CommentId { get; set; }
 
         public Guid PostId { get; set; }

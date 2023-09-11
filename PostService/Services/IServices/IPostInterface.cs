@@ -10,6 +10,6 @@ namespace PostService.Services.IServices
         Task<string>UpdatePostAsync(Guid PostId,PostRequestDto updatedPost);
         Task<IEnumerable<Post>> GetAllUserPostsAsync(string UserId);
         Task<PostDto> GetPostByIdAsync(Guid id);
-        Task<IEnumerable<PostDto>> GetAllPosts();
+        Task<IEnumerable<Post>> GetAllPosts();
     }
 }
