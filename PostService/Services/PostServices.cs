@@ -46,7 +46,7 @@ namespace PostService.Services
         }
 
         //Get user Posts
-        public async Task<IEnumerable<Post>> GetAllPostsAsync(string UserId)
+        public async Task<IEnumerable<Post>> GetAllUserPostsAsync(string UserId)
         {
             return await _context.Posts.Where(p=>p.UserId == UserId).ToListAsync();
            
@@ -74,6 +74,14 @@ namespace PostService.Services
                 return ex.Message;
             }
             
+        }
+
+      public  async Task<IEnumerable<PostDto>> GetAllPosts()
+        {
+            var AllPosts= await _context.Posts.ToListAsync();
+
+            var posts = _mapper.Map<PostDto>(AllPosts);
+            return (IEnumerable<PostDto>)posts;
         }
     }
 }

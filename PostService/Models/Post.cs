@@ -1,4 +1,7 @@
-﻿namespace PostService.Models
+﻿using PostService.Models.Dto;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PostService.Models
 {
     public class Post
     {
@@ -9,5 +12,8 @@
 
         public string Image { get; set; } = string.Empty;
         public string UserId { get; set; }
+
+        [NotMapped]
+        public List<CommentDto> Comments { get; set;} = new List<CommentDto>();
     }
 }

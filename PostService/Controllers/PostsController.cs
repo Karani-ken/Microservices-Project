@@ -10,7 +10,7 @@ namespace PostService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+   
     public class PostsController : ControllerBase
     {
         private readonly IPostInterface _postService;
@@ -22,6 +22,7 @@ namespace PostService.Controllers
             _postService = post;
             _response = new ResponseDto();
         }
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<ResponseDto>> CreatePost(PostRequestDto postRequestDto)
         {
@@ -40,13 +41,15 @@ namespace PostService.Controllers
             }
             return Ok(_response);
         }
-        [HttpGet]
+        [Authorize]
+        //get user posts
+        [HttpGet("My Posts")]
         public async Task<ActionResult<IEnumerable<ResponseDto>>> GetUserPosts()
         {
             //get user id from the token
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             var UserId = userIdClaim.Value;
-            var response = await _postService.GetAllPostsAsync(UserId);
+            var response = await _postService.GetAllUserPostsAsync(UserId);
             if (response == null)
             {
                 _response.IsSuccess = false;
@@ -56,7 +59,20 @@ namespace PostService.Controllers
             _response.Result = response;
             return Ok(_response);
         }
-
+        //get all posts
+        [HttpGet("All-Posts")]
+        public async Task<ActionResult<IEnumerable<ResponseDto>>> GetAllPosts()
+        {
+            var response = await _postService.GetAllPosts();
+            if (response == null)
+            {
+                _response.IsSuccess = false;
+                _response.Message = "Could not Get posts";
+                return BadRequest(_response);
+            }
+            _response.Result = response;
+            return Ok(_response);
+        }
 
     }
 }

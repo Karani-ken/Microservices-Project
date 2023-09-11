@@ -22,6 +22,9 @@ builder.Services.AddScoped<IPostInterface, PostServices>();
 
 //automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.AddSwaggenGenExtension();
+builder.AddAppAuthentication();
 var app = builder.Build();
 
 
