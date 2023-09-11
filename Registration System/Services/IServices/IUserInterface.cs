@@ -13,6 +13,10 @@ namespace Registration_System.Services.IServices
         Task<UserDto> GetUserById(Guid id);
         //UserLogin
         Task<LoginResponceDto> GetLoginAsync(LoginRequestDto login);
+
+        //Get userPosts
+        Task<IEnumerable<PostDto>> GetPostsAsync(Guid UserId);
+
        
        
     }

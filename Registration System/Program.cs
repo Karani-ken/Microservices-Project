@@ -5,7 +5,7 @@ using Registration_System.Models;
 using Registration_System.Services;
 using Registration_System.Services.IServices;
 using Registration_System.Utility;
-
+using Service_Bus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +26,12 @@ builder.Services.AddIdentityCore<User>().AddEntityFrameworkStores<ApplicationDbC
 
 builder.Services.AddScoped<IUserInterface, UserService>();
 builder.Services.AddScoped<IJwtInterface, JwtService>();
+builder.Services.AddScoped<IPostInterface, PostService>();
+builder.Services.AddScoped<IMessageBus, MessageBus>();
 
 //automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddHttpClient("Post", c => c.BaseAddress = new Uri(builder.Configuration["ServiceUrl:PostApi"]));
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 var app = builder.Build();
 

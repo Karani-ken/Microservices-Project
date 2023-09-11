@@ -14,6 +14,7 @@ namespace Registration_System.Services
         private readonly UserManager<User> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly IJwtInterface _jwtGenerator;
+        private readonly IPostInterface _postInterface;
         public UserService(IMapper mapper, UserManager<User> userManager, ApplicationDbContext context, IJwtInterface jwtToken)
         {
             _mapper = mapper;
@@ -74,6 +75,14 @@ namespace Registration_System.Services
                 Token = token
             };
             return LoggedUser;
+        }
+
+       public async Task<IEnumerable<PostDto>> GetPostsAsync(Guid UserId)
+        {
+            var AllPosts = await _postInterface.GetPosts();
+            var UserPosts = AllPosts.Where(p => p.UserId == UserId).ToList();
+            return UserPosts;
+          
         }
     }
 }
