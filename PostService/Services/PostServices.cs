@@ -53,12 +53,12 @@ namespace PostService.Services
            
         }
 
-        public async Task<PostDto> GetPostByIdAsync(Guid id)
+        public async Task<Post> GetPostByIdAsync(Guid id)
         {
-            var result = await _context.Posts.Where(p => p.PostId == id).FirstOrDefaultAsync();
-            var postToReturn = _mapper.Map<PostDto>(result);
+            return await _context.Posts.Where(p => p.PostId == id).FirstOrDefaultAsync();
+           
 
-            return postToReturn;
+           
         }
 
         public async Task<string> UpdatePostAsync(Guid PostId, PostRequestDto updatedPost)

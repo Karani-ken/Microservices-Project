@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PostService.Models;
@@ -73,6 +74,22 @@ namespace PostService.Controllers
             _response.Result = response;
             return Ok(_response);
         }
+        //delete a post
+        [HttpDelete]
+        public async Task<ActionResult<ResponseDto>> DeletePost(Guid Id)
+        {
+            var postToDelete = await _postService.GetPostByIdAsync(Id);
+            var response = await _postService.DeletePostAsync(postToDelete);
+
+            if (!string.IsNullOrWhiteSpace(response))
+            {
+                _response.IsSuccess = false;
+                _response.Message = response;
+                return BadRequest(_response);
+            }
+            return Ok(_response);
+        }
+        //UpdatePost
 
     }
 }
